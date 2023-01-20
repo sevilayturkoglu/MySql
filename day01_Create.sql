@@ -61,10 +61,13 @@ Q2: "tedarikciler" table'indan "tedarikci_ismi" ve
 ---------------------------------------------------------*/
 
 create table tedarikciler_son
-as 
-select ulasim_tarihi,tedarikci_ismi
+as
+select tedarikci_ismi,ulasim_tarihi
 from tedarikciler;
+
 select * from tedarikciler_son;
+
+
 
 
 
