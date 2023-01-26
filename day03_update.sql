@@ -36,7 +36,7 @@ Id ve isim'i beraber Primary Key yapin.
 
 select * from firmalar ;
 
--- id si 3 olan firmanin ismini 'KRM' olarak guncelle
+-- id si 3 olan firmanin ismini 'KRM' olarak guncellefirmalarkelimeler
 update firmalar
 set isim='KRM'
 where id=3;
@@ -73,7 +73,9 @@ where isim='ACB';
 set iletisim_isim='Ayse Can'
 where iletisim_isim='Osman Can';
  
- 
+ select *
+ from kelimeler
+ where regexp_like (kelime,'^.[O][a-z]$','c');
  
  
  

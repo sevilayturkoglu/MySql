@@ -38,7 +38,8 @@ CREATE TABLE kelimeler
 	(1016, 'h-t', 3),
     (1017, 'h?t', 3),
     (1018, 'hOOOt', 5),
-    (1019, 'O', 1);
+    (1019, 'O', 1),
+    (1020,'zOp',5);
    
 SELECT * FROM kelimeler;
 -- Q1 : Icerisinde 'ot' veya 'at' bulunan kelimeleri case-sensitive'e dikkat ederek listele
@@ -67,26 +68,31 @@ SELECT * FROM kelimeler;
      -- Q4 : Sonu 't' veya 'm' ile bitenleri case-sensitive'e dikkat etmeksizin listele
     -- NOT: Bitisi gostermek icin $ karakteri kullanilir.
     
-     select kelime
+    select kelime
  from kelimeler
  where regexp_like(kelime,'t$|m$');
  
  -- Q5 : h ile baslayip t ile biten 3 harfli kelimeleri (h ile t kucuk harfli olanlari) listeleyiniz
 	-- NOT : [!-~] =butun karakterleri ifade eder ***********************
     -- [a-zA-Z0-9],harf ve rakamlari ifade eder***********************
-    -- Regexp nin like dan farki case sensitive yapabilmemizdir,lie sensitive degil
+    -- Regexp nin like dan farki case sensitive yapabilmemizdir,like sensitive degil
     
     select kelime
  from kelimeler
- where regexp_like(kelime,'h[!-~]t','c');
+ where regexp_like(kelime,'h[!-~]t','c');-- h ile t arasindaki her turlu seyi getirir ama 1 tane getirir
  
  select kelime
  from kelimeler
- where regexp_like(kelime,'h[a-zA-Z0-9]t','c');
+ where regexp_like(kelime,'h[a-zA-Z0-9]t','c');-- h ile t arasinda bulunan sadece harf ve rakamlardan 1 tane getirir
  
  select kelime
  from kelimeler
- where regexp_like(kelime,'h[a-z]t','c');
+ where regexp_like(kelime,'h[a-z]t','c');-- ht arasindaki kucuk harf getirir 
+ 
+ select kelime
+ from kelimeler
+ where regexp_like(kelime,'h[a-z][a-z]t','c');-- ht arasindaki kucuk harf getirir 2 tane
+ 
     
     select kelime
  from kelimeler
@@ -101,17 +107,23 @@ SELECT * FROM kelimeler;
 
   select kelime,id
  from kelimeler
- where regexp_like(kelime,'[a-zA-Z0-9]O[a-zA-Z0-9]','i');  
- 
-  select kelime,id
- from kelimeler
  where regexp_like(kelime,'[a-zA-Z0-9]O[a-zA-Z0-9]','c');  
  
- SELECT kelime
+ -- ortasinda buyuk O olan 3 harfli kelimeleri listeler
+ SELECT id,kelime
 FROM kelimeler
 WHERE REGEXP_LIKE (kelime, '^.[O][a-zA-Z]$','c');
+
+  select kelime,id
+ from kelimeler
+ where regexp_like(kelime,'[a-zA-Z0-9]O[a-zA-Z0-9]','i');  
+ 
+ -- Q7 : h ile baslayan ortasinda buyuk O olan harf ile devam eden 3 harfli kelimeleri listele
+ SELECT id,kelime
+FROM kelimeler
+WHERE REGEXP_LIKE (kelime, '^h[O][a-zA-Z]$','c');
     
-    -- Q7 : 2. ve 3. harfi o olan tum kelimeleri (case sensitive olmaksizin) listeleyiniz
+    -- Q8 : 2. ve 3. harfi o olan tum kelimeleri (case sensitive olmaksizin) listeleyiniz
     
      SELECT kelime
 FROM kelimeler

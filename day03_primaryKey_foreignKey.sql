@@ -17,6 +17,7 @@
 );
 2) CONSTRAINT Keyword Kullanilarak Primary Key Tanimlanabilir; 
 "CONSTRAINT constraintName PRIMARY KEY(column1, column2, ... column_n)" 
+
 CREATE TABLE students 
 (
 id int,
@@ -34,7 +35,6 @@ student_name varchar(20)not null,
 address varchar(50),
 phone varchar(11) unique
 );
-
 
 /*---------------------------------------------------------------------
 "sehirler" isimli bir Table olusturun. 
