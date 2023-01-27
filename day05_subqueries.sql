@@ -77,7 +77,6 @@ where sirket in (select sirket
 from personel
 where sehir='Ankara' );
 
-
 /*----------------------------------------------------------------                
   4) Veli Yilmaz isimli personelin calistigi sirketlerin sirket 
   ismini ve personel sayilarini listeleyiniz.
