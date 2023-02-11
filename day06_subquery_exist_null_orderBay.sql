@@ -37,6 +37,7 @@ select*from nisan_satislar;
 SORU 1 : Her iki ayda da ayni id ile satilan urunlerin urun_id'lerini
 ve urunleri mayis ayinda alanlarin isimlerini getiren bir query yaziniz.
 ----------------------------------------------------------------*/ 
+
 select urun_id,musteri_isim
 from mayis_satislar
 where urun_id in(select urun_id
@@ -49,14 +50,9 @@ where exists(select urun_id
 from nisan_satislar
 where mayis_satislar.urun_id=nisan_satislar.urun_id );
 
-select urun_id,musteri_isim
-from mayis_satislar
-where exists(select urun_id
-from nisan_satislar
-);
 
 /*----------------------------------------------------------------
-SORU 2 : Her iki ayda da satilan urun_isimleri ayni urunlerin,
+SORU 2 : Her iki ayda da satilan urun_isimleri ayni olan urunlerin,
 urun_isim'ini ve urunleri nisan ayinda alan musterilerin isimlerini 
 getiren bir Query yaziniz.
 ----------------------------------------------------------------*/ 
@@ -71,6 +67,14 @@ where mayis_satislar.urun_isim=nisan_satislar.urun_isim );
 SORU 3 : Nisan ayinda satilip mayis ayinda satilmayan urun ismini ve
 satin alan kisiyi listeleyen bir QUERY yaziniz.
 ----------------------------------------------------------------*/
+
+
+
+
+
+
+
+
 select urun_isim,musteri_isim
 from nisan_satislar
 where not exists(select urun_isim
@@ -83,11 +87,12 @@ where ! exists(select urun_isim
 from mayis_satislar
 where mayis_satislar.urun_isim=nisan_satislar.urun_isim );
 
-
+use sys;
 /*----------------------------------------------------------------
 SORU 4 : Mayis ayinda satilip nisan ayinda satilmayan urun id sini ve
 satin alan kisiyi listeleyen bir QUERY yaziniz.
 ----------------------------------------------------------------*/
+
 select urun_id,musteri_isim
 from mayis_satislar
 where not exists(select urun_isim
@@ -111,6 +116,7 @@ INSERT INTO insanlar VALUES(345678901, 'Mine Bulut', 'Izmir');
 INSERT INTO insanlar (ssn, adres) VALUES(456789012, 'Bursa');
 INSERT INTO insanlar (ssn, adres) VALUES(567890123, 'Denizli');
 select * from insanlar;
+
 select *
 from insanlar
 where isim is null;
@@ -153,12 +159,13 @@ INSERT INTO insanciklar VALUES (345678901, 'Ali','Yilmaz', 'Istanbul');
 SELECT * FROM insanciklar;
 
 -- Soru 1: Insanciklar tablosundaki datalari adres'e gore siralayin :
+
 select *
 from insanciklar
 order by adres;
 
-
 -- Soru 2: Isim' i Mine olanlari soyisim sirali olarak listeleyen Query yaziniz.
+
 select *
 from insanciklar
 where isim='Mine'
@@ -171,17 +178,24 @@ where soyisim='Bulut'
 order by isim;
 
 -- Soru 4: Insanciklar tablosundaki tum kayitlari SSN numarasi buyukten kucuge olarak siralayin.
+
 select *
 from insanciklar
 order by ssn desc;
 
 -- Soru 5: Insanciklar tablosundaki tum kayitlari SSN numarasina gore siralayin.
+
 select *
 from insanciklar
 order by ssn ;
 
 -- Soru 6: Insanciklar tablosundaki tum kayitlari Soyisimler ters sirali,
 -- isimler Natural sirali olarak listeleyin.
+
+select *
+from insanciklar
+order by soyisim desc,isim;
+
 select *
 from insanciklar
 order by soyisim desc,isim asc;
@@ -189,19 +203,24 @@ order by soyisim desc,isim asc;
 
 
 -- Soru 7: Insanciklar tablosundaki tum kayitlari adresler ters sirali,
--- isimler ters sirali olarak listeleyin.
+-- isimler ters sirali olarak listeleyin
+
+
 select *
 from insanciklar
 order by adres desc,isim desc;
 
 -- Soru 8: Insanciklar tablosundaki tum kayitlari adresler ters sirali,
 -- isimler ters sirali ,soyisimler ters sirali olarak listeleyin.
+
 select *
 from insanciklar
 order by adres desc,isim desc,soyisim desc;
 
 
 
+select min(urun_id) from mayis_satislar;
+select * from mayis_satislar where urun_id=(select max(urun_id) from mayis_satislar);
 
 
 

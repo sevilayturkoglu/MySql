@@ -37,6 +37,7 @@ SELECT * FROM sirketler;
  1) Personel sayisi 15.000'den cok olan sirketlerin isimlerini
  ve bu sirkette calisan personelin isimlerini listeleyin
 ----------------------------------------------------------------*/
+
 select sirket
 from sirketler
 where personel_sayisi >15000;
@@ -61,6 +62,7 @@ where sirket='Honda';
  2) Sirket_id'si 101'den buyuk olan sirketlerin 
  maaslarini ve sehirlerini ve sirket ismini listeleyiniz
 ----------------------------------------------------------------*/
+
 select sirket,sehir,maas
 from personel
 where sirket in(select sirket
@@ -81,6 +83,9 @@ where sehir='Ankara' );
   4) Veli Yilmaz isimli personelin calistigi sirketlerin sirket 
   ismini ve personel sayilarini listeleyiniz.
 ----------------------------------------------------------------*/
+select sirket
+from personel
+where isim ='Veli Yilmaz';
 
 select sirket,personel_sayisi
 from sirketler
@@ -109,6 +114,7 @@ kullanmaniz gerekir?
  ortalama maasini listeleyen bir QUERY yazin.
 ----------------------------------------------------------------*/
 
+
 select sirket,personel_sayisi,(select avg(maas)
                                 from personel
                                 where sirketler.sirket=personel.sirket) as average_maas -- (group by sirket)
@@ -118,6 +124,7 @@ from sirketler;
 SORU 2- Her sirketin ismini ve personelin aldigi max. maasi 
 listeleyen bir QUERY yazin.
 ----------------------------------------------------------------*/
+
 select sirket,(select max(maas)
                from personel
                where sirketler.sirket=personel.sirket) max_salary
@@ -149,6 +156,7 @@ SORU 5- Her sirketin ismini,personel sayisini ve personelin
 aldigi max. ve min. maasi listeleyen bir QUERY yazin.
 ----------------------------------------------------------------*/  
 
+
 select sirket,personel_sayisi,(select max(maas)
 from personel
 where sirketler.sirket=personel.sirket)max_salary,
@@ -157,11 +165,11 @@ from personel
 where sirketler.sirket=personel.sirket)min_salary
 from sirketler;
 
-  
-/*----------------------------------------------------------------
+  /*----------------------------------------------------------------
 SORU 6- Her sirketin ismini ve personel sayisini ve iscilere
 odedigi toplam maasi listeleyen bir QUERY yazin.
 ----------------------------------------------------------------*/
+
 select sirket,personel_sayisi,(select sum(maas)
 from personel
 where sirketler.sirket=personel.sirket)toplam_maas

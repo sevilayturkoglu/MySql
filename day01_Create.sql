@@ -19,6 +19,12 @@ adres varchar(100),
 son_degistirme_tarihi date
 );
 
+create table pupils(
+nu char(4),
+isim varchar(25),
+sehir varchar(100)
+);
+
 drop table ogrenciler; -- tabloyu tamamen siler
 select * from ogrenciler;
 /*------------------------------------------------------------
@@ -46,7 +52,7 @@ FROM other_table_name
 -- ogrenciler1 tablosundan "isim" ve "not_ortalamasi" field'larini
 -- alarak ogrenci_derece isimli yeni bir tablo olusturun.
 
-create table ogrenci_derece
+create table ogrenc_derece
 as
 select isim,not_ortalamasi
 from ogrenciler;

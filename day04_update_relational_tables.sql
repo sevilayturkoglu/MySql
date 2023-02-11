@@ -53,7 +53,6 @@ a) Urun tablosundan Ali Can'in aldigi urunun ismini,
 tedarik tablosunda irtibat Merve Temiz olan 
 sirketin ismi ile degistirin. */
 
-
 update urun
 set urun_isim=(select isim
                from tedarik
@@ -219,6 +218,14 @@ INSERT INTO mart_satislar VALUES (20, 'Hatice', 'Toyota',60000);
 3) Ismi A ile baslayan musterilerin urun_fiyatlarini %15 artirin 
 4) Honda araclarin urun id'sini 50 yapin.
 --------------------------------------------------------------------------*/
+
+
+
+
+
+
+
+
 
 update mart_satislar
 set  urun_id=30,urun_isim='Ford'

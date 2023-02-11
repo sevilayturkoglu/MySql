@@ -38,6 +38,7 @@ SELECT * FROM cucuklar;
 
 delete from cucuklar
 where veli_isim in('Ali','Ayse');
+
 delete from cucuklar
 where veli_isim ='Ali' or veli_isim='Ayse';
 

@@ -14,6 +14,7 @@ INSERT INTO employees VALUES(345678901, 'Mine Bulut', 'Izmir');
 
 select * from employees;
 
+
 SELECT employee_id AS id, employee_name AS name, employee_birth_city AS city
 FROM employees;
 
@@ -48,6 +49,7 @@ SELECT * FROM manav;
 
 -- 1) Isme gore, alinan urunlerin toplam kilosunu bulup,
 -- isim sirasina gore siralayin.
+
 select isim,sum(urun_miktar)toplam_kg
 from manav
 group by isim 
@@ -55,26 +57,29 @@ order by isim ;
 
 -- 2) Isme gore, alinan urunlerin toplam kilosunu bulup,
 -- isim sirasina gore ters siralayin.
+
+
 select isim,sum(urun_miktar)toplam_kg
 from manav
 group by isim 
 order by isim desc;
 
 -- 3) Bunlari bir de toplam kiloya gore ters sirali yapalim
-SELECT isim, SUM(urun_miktar) AS top_kg
-FROM manav
-GROUP BY isim
-ORDER BY top_kg DESC;
+
+select isim,sum(urun_miktar)toplam_kg
+from manav
+group by isim 
+order by toplam_kg desc;
 
 -- 4) Urun ismine gore, urunu alan toplam kisi sayisini,
--- kisi sayisina gore siralayiniz.
-select urun_adi ,count(isim) kisi_sayisi
-from manav
+-- kisi sayisina gore coktan aza dogru siralayiniz.
+
+select urun_adi,count(isim)kisi_sayisi
+from manav 
 group by urun_adi
-order by kisi_sayisi;
+order by kisi_sayisi desc;
 
 -- 5) Alinan kilo miktarina gore musteri sayisini listeleyiniz.
-
 select urun_miktar ,count(isim)alan_sayisi 
 from manav
 group by urun_miktar;
@@ -98,6 +103,7 @@ ORDER BY urun_adi ;
 -- 7) Satilan meyvenin dort harfli  olmasina  (urun_adi) gore urun alan kisi sayisini
 -- urun_adi NATURAL ORDER'a gore gosteren QUERY yaziniz.
 -- NULL olarak girilen meyveyi listelemesin.
+
 
 SELECT urun_adi,count(isim) AS kisi_sayisi
 FROM manav
@@ -126,6 +132,15 @@ from manav
 group by isim,urun_adi
 order by isim desc;
 
+select urun_adi ,sum(urun_miktar)
+from manav
+group by urun_adi
+order by urun_adi desc;
+
+select isim ,sum(urun_miktar) toplam_kg
+from manav
+group by isim
+order by toplam_kg desc;
 
 
 

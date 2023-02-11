@@ -1,8 +1,7 @@
 
 /*==================================SELECT-WHERE=============================================
 Verileri SELECT komutu ile veritabanindan cekerken filtreleme yapmak icin : 
- 
-SELECT ile birlikte WHERE komutu kullanilabilir.
+ SELECT ile birlikte WHERE komutu kullanilabilir.
 -----Syntax----- :
 SELECT field1, field2 
 FROM tablo_adi 
@@ -43,20 +42,26 @@ from meslek_lisesi
 where derece<80;
 
 -- Q3 : Adresi Ankara olan ogrencilerin isim ve derece bilgilerini listeleyin.
-
 select isim,derece
 from meslek_lisesi
 where adres='Ankara';
 
 -- Q4 : okul_no'su 1005 olan ogrencinin isim ve adres bilgisini listeleyin.
+
 select isim,adres
 from meslek_lisesi
 where okul_no='1005';
 
 -- derecesi 70 80 arasi olan ogrencilerin sehirlerini ve okulnosunu aliniz
-select adres,okul_no,derece
+
+select adres,okul_no
 from meslek_lisesi
-where derece>70 and derece<80;
+where derece
+between 70 and 80;
+
+select adres,okul_no
+from meslek_lisesi
+where derece >70 and derece<80;
 
 -- *************************************************************************
 CREATE TABLE ogretmen_lisesi(
@@ -131,6 +136,7 @@ where sinav_notu
 between 70 and 80;
 
 -- Listeden Muhammet Talha Kurt ile Murat arasinda bulunan kisileri seciniz
+
 select *
 from ogretmen_lisesi
 where isim
@@ -191,14 +197,15 @@ between 'Ahmet' and 'Ayse Cano';
 /*-------------------------------------------------------------------------
 Q10: Maasi 7000 ya da ismi Ayse olan personel id'lerini listeleyin
 ---------------------------------------------------------------------------*/
-
 select id
 from personel
 where maas=7000 or isim='Ayse';
 
+
 /*-------------------------------------------------------------------------
 Q11: Id'si 10001, 10005 ya da 10008 olan personel isimlerini listeleyin
 ---------------------------------------------------------------------------*/
+
 -- 1.yol
 select isim
 from personel
@@ -314,6 +321,7 @@ where maas  like '_____';
 /*-------------------------------------------------------------------------
 Q21: 1. harfi a ve 7. harfi a olan personeli listeleyiniz
 ---------------------------------------------------------------------------*/
+
 select *
 from personel
 where isim like 'a_____a%';

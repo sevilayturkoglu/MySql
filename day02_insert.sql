@@ -43,7 +43,7 @@ INSERT INTO fen_lisesi (isim,adress) values('Abdullah Ak','Izmir');
 INSERT INTO fen_lisesi (okul_no,adress) values(109,'Izmir');-- bunu kabul etmez cunki isim bos birakilamaz 
 INSERT INTO fen_lisesi (okul_no,isim,adress) values(109,'Yucel Bey','Izmir');
 insert into fen_lisesi(isim,derece) values('Sevinc Karacan',4.9);
-
+select * from fen_lisesi;
 -- UNIQUE olarak belirledigimiz bir field'a istedigimiz kadar NULL deger kaydedebiliriz
 -- ancak data tipi String ise hiclik ifadesini sadece 1 kere kaydeder,
 -- diger kayitlarda duplicate hatasi verir.
@@ -51,7 +51,7 @@ insert into fen_lisesi(isim,derece) values('Sevinc Karacan',4.9);
 
 
 /* ----------------------------------------------
-Q1 : okul_no int, isim , adres, derece fieldlari olan 
+Q1 : okul_no , isim , adres, derece fieldlari olan 
 anadolu lisesi table olusturun. okul_no CHAR ve UNIQUE, 
 isim NOT NULL olacak
 ------------------------------------------------- */

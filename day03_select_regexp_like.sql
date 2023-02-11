@@ -45,11 +45,13 @@ SELECT * FROM kelimeler;
 -- Q1 : Icerisinde 'ot' veya 'at' bulunan kelimeleri case-sensitive'e dikkat ederek listele
 	-- NOT: VEYA islemi icin | karakteri kullanilir.
     
- select kelime   
+    select kelime   
  from kelimeler
  where regexp_like(kelime,'ot|at','c');-- case sensitive 
  
  -- Q2 : Icerisinde 'ot' veya 'at' bulunan kelimeleri case-sensitive'e dikkat etmeksizin listele
+ 
+
  select kelime
  from kelimeler
  where regexp_like(kelime,'ot|at','i');-- case sensitive degil
@@ -69,13 +71,14 @@ SELECT * FROM kelimeler;
     -- NOT: Bitisi gostermek icin $ karakteri kullanilir.
     
     select kelime
- from kelimeler
- where regexp_like(kelime,'t$|m$');
+    from kelimeler
+    where regexp_like(kelime,'t$|m$');
  
  -- Q5 : h ile baslayip t ile biten 3 harfli kelimeleri (h ile t kucuk harfli olanlari) listeleyiniz
 	-- NOT : [!-~] =butun karakterleri ifade eder ***********************
     -- [a-zA-Z0-9],harf ve rakamlari ifade eder***********************
     -- Regexp nin like dan farki case sensitive yapabilmemizdir,like sensitive degil
+    
     
     select kelime
  from kelimeler
@@ -106,17 +109,17 @@ SELECT * FROM kelimeler;
 -- Q6 : 2. harfi O olan 3 harfli kelimeleri (o harfi buyuk olanlari) ve id lerini listeleyiniz
 
   select kelime,id
- from kelimeler
- where regexp_like(kelime,'[a-zA-Z0-9]O[a-zA-Z0-9]','c');  
+  from kelimeler
+  where regexp_like(kelime,'[a-zA-Z0-9]O[a-zA-Z0-9]','c');  
  
  -- ortasinda buyuk O olan 3 harfli kelimeleri listeler
  SELECT id,kelime
-FROM kelimeler
-WHERE REGEXP_LIKE (kelime, '^.[O][a-zA-Z]$','c');
+ FROM kelimeler
+ WHERE REGEXP_LIKE (kelime, '^.[O][a-zA-Z]$','c');
 
   select kelime,id
- from kelimeler
- where regexp_like(kelime,'[a-zA-Z0-9]O[a-zA-Z0-9]','i');  
+  from kelimeler
+ where regexp_like(kelime,'[a-zA-Z0-9]O[a-zA-Z0-9]$','i');  
  
  -- Q7 : h ile baslayan ortasinda buyuk O olan harf ile devam eden 3 harfli kelimeleri listele
  SELECT id,kelime
@@ -127,7 +130,7 @@ WHERE REGEXP_LIKE (kelime, '^h[O][a-zA-Z]$','c');
     
      SELECT kelime
 FROM kelimeler
-WHERE REGEXP_LIKE (kelime, '[a-zA-Z0-9]oo[a-zA-Z0-9]');
+WHERE REGEXP_LIKE (kelime, '[a-zA-Z0-9]oo[a-zA-Z0-9]$');
 
 
     
